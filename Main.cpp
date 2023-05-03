@@ -9,19 +9,24 @@ using namespace std;
 using namespace sf;
 
 
-
-
+Color dd(211, 211, 211);
+Color cw(89, 176, 13);
 Color c(0,202,27);
 Color c2(67,202,0);
 Color magic(58, 228, 205);
+Color maple(103, 137, 24);
 Biome grassland(Vector2f(700, 700), Color::Green);
 
 Biome desert(Vector2f(600, 600), Color::Yellow);
 Biome birchforest(Vector2f(950, 950),c2);
 Biome countryland(Vector2f(900, 900), c); 
 Biome magicalforest(Vector2f(900, 900), magic);
-
-
+Biome mapleforest(Vector2f(900, 950), maple);
+Biome CherryWoods(Vector2f(800, 1350), cw);
+Biome Moun(Vector2f(1900, 650), Color::Black);
+Biome cold(Vector2f(700, 1000), Color::White);
+Biome flower(Vector2f(500, 700), Color::Green);
+Biome DeathD(Vector2f(900, 900), dd);
 int main(){
     
     sf::View view1;
@@ -38,6 +43,12 @@ int main(){
     birchforest.setPos(Vector2f(-1200,-1200));
     countryland.setPos(Vector2f(-400,300));
     magicalforest.setPos(Vector2f(1000, 200));
+    mapleforest.setPos(Vector2f(-300, -1150));
+    CherryWoods.setPos(Vector2f(1200, -1150));
+    Moun.setPos(Vector2f(-400, -300));
+    cold.setPos(Vector2f(600, -1150));
+    flower.setPos(Vector2f(500, 350));
+    DeathD.setPos(Vector2f(-1300, -300));
     Texture t;
     t.loadFromFile("Art/Trees/tree1.png");
 
@@ -88,12 +99,20 @@ int main(){
         }
     } 
         }
-        window.clear(sf::Color::Black);
+        window.clear(sf::Color::Blue);
+        
+        mapleforest.drawTo(window);
         grassland.drawTo(window);
         desert.drawTo(window);
         birchforest.drawTo(window);
         countryland.drawTo(window);
         magicalforest.drawTo(window);
+        CherryWoods.drawTo(window);
+        cold.drawTo(window);
+        flower.drawTo(window);
+        Moun.drawTo(window);
+        countryland.drawTo(window);
+        DeathD.drawTo(window);
         //for (unsigned int i = 0u; i < 50; ++i)
             //window.draw(oaktree[i]);
 
