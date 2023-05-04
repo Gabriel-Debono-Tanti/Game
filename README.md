@@ -4,7 +4,7 @@ A Small game made in SFML with the help of a few small tools that I made
 
 ## Roadmap
 
-| Version | Notes                                                                    | Progress |
+| Version | Notes                                                                    | 
 | ---     | ---                                                                      |
 |  0.0.5  | Add Grasslands, Mountains, Magical Forest, Birch Forest Oak Woods, Maple Forest Cherry Forest, Desert and Death Desert                    |
 |  0.0.6  | Add Alaphanty, Taiga, Flower, Cold, Swamp and Comory                  |
