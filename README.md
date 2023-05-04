@@ -13,3 +13,22 @@ A Small game made in SFML with the help of a few small tools that I made
 |  0.0.9  | Add Biome Textures, Trees for Alaphanty and Ice Spikes                                                                                    |
 |  0.1.0  | Add Fixed Procedural Map Generation                                                                                                       |
 
+
+
+
+
+## Versions
+
+| Version | Progress            | Release Date |
+| ------- | ---                 | ----          |
+|  0.0.5  | :heavy_check_mark:  |  May 3rd 2023 |
+|  0.0.6  | :large_blue_circle: |        -      |
+|  0.0.7  |    -                |        -      |
+|  0.0.8  |    -                |        -      |
+|  0.0.9  |    -                |        -      |
+|  0.1.0  |    -                |        -      |
+
+
+## Contributions
+
+Well so far I have done everything all by myself. So contributions are accepted you just have to read how to contribute in (CONTRIBUTING.md) 
