@@ -28,6 +28,9 @@ A Small game made in SFML with the help of a few small tools that I made
 |  0.0.9  |    -                |        -      |
 |  0.1.0  |    -                |        -      |
 
+:heavy_check_mark: = Released
+:large_blue_circle: = Near Completion
+:red_circle: = Just Started
 
 ## Contributions
 
