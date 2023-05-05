@@ -31,7 +31,7 @@ A Small game made in SFML with the help of a few small tools that I made
 :heavy_check_mark: = Released
 :large_blue_circle: = Near Completion
 :red_circle: = Just Started
-- = None
+"-" = None
 ## Contributions
 
 Well so far I have done everything all by myself. So contributions are accepted you just have to read how to contribute in [CONTRIBUTING.md](https://github.com/Gabriel-Debono-Tanti/Game/blob/main/CONTRIBUTING.md). With contributions this project will be released quicker. 
