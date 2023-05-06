@@ -20,7 +20,7 @@ A Small game made in SFML with the help of a few small tools that I made
 ## Versions
 
 | Version | Progress            | Release Date    |
-| ------- | ---                 | ----            |
+| :---: | :---:                 | :---:            |
 |  0.0.5  | :heavy_check_mark:  |  May 3rd 2023   |
 |  0.0.6  | :heavy_check_mark:  |  May 6th 2023 :crown:  |
 |  0.0.7  |    -                |        -        |
