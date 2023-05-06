@@ -1,10 +1,15 @@
 #include <SFML/Graphics.hpp>
 #include "Biome.hpp"
 #include "Object.hpp"
-
+#include "JSONlibrary/json.hpp"
+#include <fstream>
+#include <iostream>
+#include <string>
 #include <cstdlib>
 #include <vector>
 #include <math.h>
+#include <ctime>
+
 using namespace std;
 using namespace sf;
 
@@ -15,8 +20,12 @@ Color c(0,202,27);
 Color c2(67,202,0);
 Color magic(58, 228, 205);
 Color maple(103, 137, 24);
+Color cdb(33, 78, 211);
+Color a(132, 8, 16);
+Color co(8, 146, 208);
+Color swa(35, 40, 0);
+Color ta(0, 66, 37);
 Biome grassland(Vector2f(700, 700), Color::Green);
-
 Biome desert(Vector2f(600, 600), Color::Yellow);
 Biome birchforest(Vector2f(950, 950),c2);
 Biome countryland(Vector2f(900, 900), c); 
@@ -27,13 +36,21 @@ Biome Moun(Vector2f(1900, 650), Color::Black);
 Biome cold(Vector2f(700, 1000), Color::White);
 Biome flower(Vector2f(500, 700), Color::Green);
 Biome DeathD(Vector2f(900, 900), dd);
+Biome CB(Vector2f(400, 400), cdb);
+
+Biome Taiga(Vector2f(1000, 800), ta);
+Biome Swamp(Vector2f(500, 500), swa);
+Biome Al(Vector2f(650, 650), a);
+Biome Com(Vector2f(600, 600), co);
 int main(){
-    
+     
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
     sf::View view1;
     view1.setSize(1000.f, 1000.f);
 
 // zoom the view relatively to its current size (apply a factor 0.5, so its final size is 600x400)
-    view1.zoom(4);
+    view1.zoom(6);
     ContextSettings settings;
     
     RenderWindow window(VideoMode(1000, 1000), "New Game", Style::Titlebar | Style::Close, settings);
@@ -49,6 +66,11 @@ int main(){
     cold.setPos(Vector2f(600, -1150));
     flower.setPos(Vector2f(500, 350));
     DeathD.setPos(Vector2f(-1300, -300));
+    CB.setPos(Vector2f(-2000, 2500));
+    Swamp.setPos(Vector2f(-1000,1250));
+    Taiga.setPos(Vector2f(-500,1200));
+    Al.setPos(Vector2f(2000, 2400));
+    Com.setPos(Vector2f(-2000, -2000));
     Texture t;
     t.loadFromFile("Art/Trees/tree1.png");
 
@@ -60,6 +82,8 @@ int main(){
      //   oaktree[i].setTexture(t);
         
    // }
+   auto month =  1 + ltm->tm_mon;
+   auto day= ltm->tm_mday;
     std::vector<Object> oaktrees;
 
     // Generate 10 randomly generated sprites
@@ -78,6 +102,7 @@ int main(){
     while (window.isOpen())
     {
         sf::Event event;
+
         while (window.pollEvent(event))
         {
             
@@ -113,11 +138,17 @@ int main(){
         Moun.drawTo(window);
         countryland.drawTo(window);
         DeathD.drawTo(window);
+        Swamp.drawTo(window);
+        Taiga.drawTo(window);
+        Al.drawTo(window);
+        Com.drawTo(window);
         //for (unsigned int i = 0u; i < 50; ++i)
             //window.draw(oaktree[i]);
 
         window.setView(view1);
-
+        if(day == 6 && month == 5){
+            CB.drawTo(window);
+        }
         for (auto& sprite : oaktrees)
     {
         for (auto& otherSprite : oaktrees)
