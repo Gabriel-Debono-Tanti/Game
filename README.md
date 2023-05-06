@@ -19,14 +19,14 @@ A Small game made in SFML with the help of a few small tools that I made
 
 ## Versions
 
-| Version | Progress            | Release Date |
-| ------- | ---                 | ----          |
-|  0.0.5  | :heavy_check_mark:  |  May 3rd 2023 |
-|  0.0.6  | :large_blue_circle: |        -      |
-|  0.0.7  |    -                |        -      |
-|  0.0.8  |    -                |        -      |
-|  0.0.9  |    -                |        -      |
-|  0.1.0  |    -                |        -      |
+| Version | Progress            | Release Date    |
+| ------- | ---                 | ----            |
+|  0.0.5  | :heavy_check_mark:  |  May 3rd 2023   |
+|  0.0.6  | :large_blue_circle: |  May 6th 2023 :crown:  |
+|  0.0.7  |    -                |        -        |
+|  0.0.8  |    -                |        -        |
+|  0.0.9  |    -                |        -        |
+|  0.1.0  |    -                |        -        |
 
 :heavy_check_mark: = Released
 :large_blue_circle: = Near Completion
