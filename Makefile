@@ -5,7 +5,7 @@ LIBS = -lsfml-window -lsfml-system -lsfml-graphics
 SRCS = Main.cpp
 
 ifeq ($(OS),Windows_NT)
-	LIBS = -Lsrc/lib/ $(LIBS)
+	LIBS := -Lsrc/lib/ $(LIBS)
 	TARGET = Game.exe
 endif
 
