@@ -1,6 +1,13 @@
 CXX = g++
-CXXFLAGS = -Wall -Werror -pedantic -std=c++11
-TARGET = Test
+CXX_FLAGS = -Wall -pedantic -std=c++11 -Isrc/include/
+TARGET = Game
 LIBS = -lsfml-window -lsfml-system -lsfml-graphics
-$(TARGET): Main.cpp
-$(CXX) $(CXXFLAGS) -o $(TARGET) Main.cpp $(LIBS)
+SRCS = Main.cpp
+
+ifeq ($(OS),Windows_NT)
+	LIBS := -Lsrc/lib/ $(LIBS)
+	TARGET = Game.exe
+endif
+
+$(TARGET):
+	$(CXX) $(CXX_FLAGS) -o $(TARGET) $(SRCS) $(LIBS)
