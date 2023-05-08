@@ -51,4 +51,4 @@ jobs:
       - name: Install SFML
         run: brew install sfml
       - name: Build
-        run: make
+        run: make -f Makefile.mac
