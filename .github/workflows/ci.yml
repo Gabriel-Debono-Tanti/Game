@@ -23,12 +23,14 @@ jobs:
         name: windows-x86_64
         path: ./Game.exe
         if-no-files-found: error
-    - name: Upload Artifacts
+    
+    - name: Upload SFML GRAPHICS DLL
       uses: actions/upload-artifact@v2
       with:
-        name: dlls
-        path: ./dependencies/
+        name: sfml-graphics
+        path: ./dependencies/sfml-graphics-2.dll
         if-no-files-found: error
+  
   linux-x86_64:
     runs-on: ubuntu-latest
     steps:
