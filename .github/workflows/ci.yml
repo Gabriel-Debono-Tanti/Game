@@ -24,11 +24,11 @@ jobs:
         path: ./Game.exe
         if-no-files-found: error
     
-    - name: Upload SFML GRAPHICS DLL
+    - name: Upload Dlls
       uses: actions/upload-artifact@v2
       with:
         name: sfml-graphics
-        path: ./dependencies/sfml-graphics-2.dll
+        path: ./dependencies/*
         if-no-files-found: error
   
   linux-x86_64:
