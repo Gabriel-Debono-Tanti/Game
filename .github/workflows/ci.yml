@@ -8,31 +8,32 @@ on:
 
 jobs:
   windows-x86_64:
-    
     runs-on: windows-latest
-
     steps:
     - uses: actions/checkout@v3
       with:
           submodules: recursive
-      
-    - name: make
-      run: make -f Makefile.win 
+
+    - name: Build
+      run: make
+
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: windows-x86_64
-        path: ./Game
+        path: ./Game.exe
         if-no-files-found: error
-  
+
   linux-x86_64:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
       with:
         submodules: recursive
+
     - name: install SFML
       run: sudo apt-get install libsfml-dev
+
     - name: Build
       run: make 
 
@@ -42,5 +43,4 @@ jobs:
         name: linux-x86_64 
         path: ./Game
         if-no-files-found: error
-        
-  
+
