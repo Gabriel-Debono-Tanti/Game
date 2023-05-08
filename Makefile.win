@@ -1,5 +1,0 @@
-all: compile link 
-compile:
-	g++ -m64 -I src/include -c Main.cpp
-link:
-	g++ -m64 main.o -o Test -L src/lib -l sfml-graphics -l sfml-window -l sfml-system -l sfml-audio 
