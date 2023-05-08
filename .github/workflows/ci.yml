@@ -13,9 +13,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Set up MinGW
+      uses: mmarket/mingw-setup@v2
       with:
-          submodules: recursive
-      
+        architecture: x86_64
+        threads: 4
+
+    - name: Install SFML dependencies
+      run: |
+        pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-make mingw-w64-x86_64-pkg-config mingw-w64-x86_64-sfml
+    - name: Set SFML environment variables
+      run: |
+        echo "::add-path::/mingw64/bin"
+        echo "::add-path::/mingw64/lib"
+
     - name: make
       run: make
     - name: Upload Artifacts
