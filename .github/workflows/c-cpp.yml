@@ -1,0 +1,46 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  windows-x86_64:
+    
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: configure
+      run: ./configure
+      
+    - name: make
+      run: make
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: windows-x86_64
+        path: ./Game
+        if-no-files-found: error
+  
+  linux-x86_64:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+    - name: install SFML
+      run: sudo apt-get install libsfml-dev
+    - name: Build
+      run: make 
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: linux-x86_64
+        path: ./Game
+        if-no-files-found: error
+        
+  
