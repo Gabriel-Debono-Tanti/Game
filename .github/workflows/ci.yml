@@ -43,4 +43,12 @@ jobs:
         name: linux-x86_64 
         path: ./Game
         if-no-files-found: error
+ 
+  macos-x86_64:
+    runs-on: macos-latest
+    steps:
+      - name: Install Xcode command line tools
+        run: xcode-select --install
 
+      - name: Install SFML
+        run: brew install sfml
