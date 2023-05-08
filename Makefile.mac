@@ -1,0 +1,6 @@
+CXX = g++
+CXXFLAGS = -Wall -Werror -pedantic -std=c++11
+TARGET = Test
+LIBS = -lsfml-window -lsfml-system -lsfml-graphics -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
+$(TARGET): Main.cpp
+	$(CXX) $(CXXFLAGS) -o $(TARGET) *.cpp $(LIBS)
