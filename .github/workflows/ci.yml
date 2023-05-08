@@ -13,8 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: configure
-      run: ./Game
+      with:
+          submodules: recursive
       
     - name: make
       run: make
