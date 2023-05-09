@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-          submodules: recursive
+        submodules: recursive
 
     - name: Build
       run: make
@@ -28,7 +28,7 @@ jobs:
   linux-x86_64:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         submodules: recursive
 
@@ -48,8 +48,12 @@ jobs:
   macos-x86_64:
     runs-on: macos-latest
     steps:
-    
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
       - name: Install SFML
         run: brew install sfml
+
       - name: Build
         run: make 
