@@ -11,3 +11,5 @@ endif
 
 $(TARGET):
 	$(CXX) $(CXX_FLAGS) -o $(TARGET) $(SRCS) $(LIBS)
+
+all: $(TARGET)
