@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-          submodules: recursive
+        submodules: recursive
 
     - name: Build
       run: make
@@ -23,18 +23,11 @@ jobs:
         name: windows-x86_64
         path: ./Game.exe
         if-no-files-found: error
-    
-    - name: Upload Dlls
-      uses: actions/upload-artifact@v2
-      with:
-        name: sfml-graphics
-        path: ./dependencies/*
-        if-no-files-found: error
-  
+
   linux-x86_64:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         submodules: recursive
 
@@ -42,20 +35,32 @@ jobs:
       run: sudo apt-get install libsfml-dev
 
     - name: Build
-      run: make 
+      run: make
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: linux-x86_64 
+        name: linux-x86_64
         path: ./Game
         if-no-files-found: error
  
   macos-x86_64:
     runs-on: macos-latest
     steps:
-    
-      - name: Install SFML
-        run: brew install sfml
-      - name: Build
-        run: make 
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - name: Install SFML
+      run: brew install sfml
+
+    - name: Build
+      run: make
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: mac-x86_64
+        path: ./Game
+        if-no-files-found: error
+ 
