@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "SFML/Graphics.hpp"
-
+#include "Biome.hpp"
 class Object
 {
 public:
@@ -44,6 +44,7 @@ public:
     {
         return m_obj.getGlobalBounds().width / 2.f;
     }
+    
 
 public:
     sf::Sprite m_obj;

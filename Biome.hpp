@@ -7,8 +7,9 @@
 class Biome
 {
 private:
-    sf::RectangleShape biome;
+    
 public:
+    sf::RectangleShape biome;
     Biome(sf::Vector2f size, sf::Color colour){
         biome.setSize(size);
         biome.setFillColor(colour);
@@ -22,7 +23,7 @@ public:
     void setPos(sf::Vector2f pos){
         biome.setPosition(pos);
     }
-    
+    int id;
 };
 
 
