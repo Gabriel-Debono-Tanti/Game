@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "Biome.hpp"
 #include "Object.hpp"
+
 #include "JSONlibrary/json.hpp"
 #include <fstream>
 #include <iostream>
@@ -14,7 +15,7 @@ using namespace std;
 using namespace sf;
 
 
-Color dd(211, 211, 211);
+Color dd(111, 111, 111);
 Color cw(89, 176, 13);
 Color c(0,202,27);
 Color c2(67,202,0);
@@ -32,7 +33,7 @@ Biome countryland(Vector2f(900, 900), c);
 Biome magicalforest(Vector2f(900, 900), magic);
 Biome mapleforest(Vector2f(900, 950), maple);
 Biome CherryWoods(Vector2f(800, 1350), cw);
-Biome Moun(Vector2f(1900, 650), Color::Black);
+Biome Moun(Vector2f(1600, 650), Color::Black);
 Biome cold(Vector2f(700, 1000), Color::White);
 Biome flower(Vector2f(500, 700), Color::Green);
 Biome DeathD(Vector2f(900, 900), dd);
@@ -53,7 +54,7 @@ int main(){
     view1.zoom(6);
     ContextSettings settings;
     
-    RenderWindow window(VideoMode(1000, 1000), "New Game", Style::Titlebar | Style::Close, settings);
+    RenderWindow window(VideoMode(800, 800), "New Game", Style::Titlebar  | Style::Close, settings);
     window.setFramerateLimit(60);
     grassland.setPos(Vector2f(-1000,550));
     desert.setPos(Vector2f(500,1000));
@@ -73,7 +74,14 @@ int main(){
     Com.setPos(Vector2f(-2000, -2000));
     Texture t;
     t.loadFromFile("Art/Trees/tree1.png");
-
+    Texture cherryt;
+    cherryt.loadFromFile("Art/Trees/tree6.png");
+    Texture Bircht;
+    Bircht.loadFromFile("Art/Trees/tree2.png");
+    Texture Maplet;
+    Maplet.loadFromFile("Art/Trees/tree4.png");
+    Texture bonet;
+    bonet.loadFromFile("Art/Trees/bonetree.png");
     //Sprite oaktree[100];
    // for(int i = 0; i < 100; i++){
     //    int x = rand()%(480+400 + 1) - 400;
@@ -85,19 +93,52 @@ int main(){
    auto month =  1 + ltm->tm_mon;
    auto day= ltm->tm_mday;
     std::vector<Object> oaktrees;
-
-    // Generate 10 randomly generated sprites
-    for (int i = 0; i < 200; ++i)
-    {
-        // Use random number generators to generate random values for the sprite parameters
-        int x = rand()%(480+400 + 1) - 400;
-        int y = rand()%(1200-300 + 1) + 300;
-        int health = 0;
-        // Create an SFML sprite and set its parameters
-        Object tree(t, Vector2f((x), (y)), 500);
+    std::vector<Object> cherrytrees;
+    std::vector<Object> Birchtrees;
+    std::vector<Object> Mapletrees;
+    std::vector<Object> bonetrees;
+        for (int i = 0; i < 200; ++i)
+         {
+            int x = rand()% ((int)(countryland.biome.getSize().x)/2+30-(int)(countryland.biome.getPosition().x) - 1) + countryland.biome.getPosition().x;
+            int y = rand()% ((int)(countryland.biome.getSize().y)+260-(int)(countryland.biome.getPosition().y) - 1) + countryland.biome.getPosition().y;
+            Object tree(t, Vector2f((x), (y)), 500);
         // Push the sprite into the vector
-        oaktrees.push_back(tree);
-    }
+            oaktrees.push_back(tree);
+        }
+        for (int i = 0; i < 200; ++i)
+         {
+            int x = rand()% ((int)(CherryWoods.biome.getSize().x)/2+30-(int)(CherryWoods.biome.getPosition().x) - 1) + CherryWoods.biome.getPosition().x;
+            int y = rand()% ((int)(CherryWoods.biome.getSize().y)/6-100-(int)(CherryWoods.biome.getPosition().y) - 1) + CherryWoods.biome.getPosition().y;
+            Object tree(cherryt, Vector2f((x), (y)), 10000);
+        // Push the sprite into the vector
+            cherrytrees.push_back(tree);
+        }
+        for (int i = 0; i < 200; ++i)
+         {
+            int x = rand()% ((int)(birchforest.biome.getSize().x)/15-300-(int)(birchforest.biome.getPosition().x) - 1) + birchforest.biome.getPosition().x;
+            int y = rand()% ((int)(birchforest.biome.getSize().y)/100-330-(int)(birchforest.biome.getPosition().y) - 1) + birchforest.biome.getPosition().y;
+            Object tree(Bircht, Vector2f((x), (y)), 10000);
+        // Push the sprite into the vector
+            Birchtrees.push_back(tree);
+        }
+        
+        for (int i = 0; i < 200; ++i)
+         {
+            int x = rand()% ((int)(mapleforest.biome.getSize().x)/2-(int)(mapleforest.biome.getPosition().x) - 1) + mapleforest.biome.getPosition().x + 100;
+            int y = rand()% ((int)(mapleforest.biome.getSize().y)/100-330-(int)(mapleforest.biome.getPosition().y) - 1) + mapleforest.biome.getPosition().y;
+            Object tree(Maplet, Vector2f((x), (y)), 10000);
+        // Push the sprite into the vector
+            Mapletrees.push_back(tree);
+        }
+        for (int i = 0; i < 200; ++i)
+         {
+            int x = rand()% ((int)(DeathD.biome.getSize().x)/2-850-(int)(DeathD.biome.getPosition().x) - 1) + DeathD.biome.getPosition().x;
+            int y = rand()% ((int)(DeathD.biome.getSize().y)/2+120-(int)(DeathD.biome.getPosition().y) - 1) + DeathD.biome.getPosition().y;
+            Object tree(bonet, Vector2f((x), (y)), 1000);
+        // Push the sprite into the vector
+            bonetrees.push_back(tree);
+        }
+
     
     while (window.isOpen())
     {
@@ -109,20 +150,62 @@ int main(){
             if (event.type == sf::Event::Closed)
                 window.close();
             
+            // and align shape
+        
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 sf::Vector2i mousePos = sf::Mouse::getPosition(window);
                 sf::Vector2f mousePosF = window.mapPixelToCoords(mousePos);
                 for (auto& sprite : oaktrees) {
-            if (sprite.contains(Vector2f(mousePosF))) {
-                sprite.takeDamage(10);
-                if (sprite.m_health <= 0) {
+                    if (sprite.contains(Vector2f(mousePosF))) {
+                        sprite.takeDamage(10);
+                        if (sprite.m_health <= 0) {
                     // destroy sprite
-                    auto it = std::find_if(oaktrees.begin(), oaktrees.end(), [&sprite](const Object& s) { return &s == &sprite; });
-                    oaktrees.erase(it);
+                            auto it = std::find_if(oaktrees.begin(), oaktrees.end(), [&sprite](const Object& s) { return &s == &sprite; });
+                            oaktrees.erase(it);
+                        }
+                    }
                 }
-            }
-        }
-    } 
+                for (auto& sprite : cherrytrees) {
+                    if (sprite.contains(Vector2f(mousePosF))) {
+                        sprite.takeDamage(10);
+                        if (sprite.m_health <= 0) {
+                    // destroy sprite
+                            auto it = std::find_if(cherrytrees.begin(), cherrytrees.end(), [&sprite](const Object& s) { return &s == &sprite; });
+                            cherrytrees.erase(it);
+                        }
+                    }   
+                }
+                for (auto& sprite : Birchtrees) {
+                    if (sprite.contains(Vector2f(mousePosF))) {
+                        sprite.takeDamage(10);
+                        if (sprite.m_health <= 0) {
+                    // destroy sprite
+                            auto it = std::find_if(Birchtrees.begin(), Birchtrees.end(), [&sprite](const Object& s) { return &s == &sprite; });
+                            Birchtrees.erase(it);
+                        }
+                    }   
+                }
+                 for (auto& sprite : Mapletrees) {
+                    if (sprite.contains(Vector2f(mousePosF))) {
+                        sprite.takeDamage(10);
+                        if (sprite.m_health <= 0) {
+                    // destroy sprite
+                            auto it = std::find_if(Mapletrees.begin(), Mapletrees.end(), [&sprite](const Object& s) { return &s == &sprite; });
+                            Mapletrees.erase(it);
+                        }
+                    }   
+                }
+                for (auto& sprite : bonetrees) {
+                    if (sprite.contains(Vector2f(mousePosF))) {
+                        sprite.takeDamage(10);
+                        if (sprite.m_health <= 0) {
+                    // destroy sprite
+                            auto it = std::find_if(bonetrees.begin(), bonetrees.end(), [&sprite](const Object& s) { return &s == &sprite; });
+                            bonetrees.erase(it);
+                        }
+                    }   
+                }
+            } 
         }
         window.clear(sf::Color::Blue);
         
@@ -131,8 +214,8 @@ int main(){
         desert.drawTo(window);
         birchforest.drawTo(window);
         countryland.drawTo(window);
-        magicalforest.drawTo(window);
-        CherryWoods.drawTo(window);
+        
+        
         cold.drawTo(window);
         flower.drawTo(window);
         Moun.drawTo(window);
@@ -142,6 +225,8 @@ int main(){
         Taiga.drawTo(window);
         Al.drawTo(window);
         Com.drawTo(window);
+        CherryWoods.drawTo(window);
+        magicalforest.drawTo(window);
         //for (unsigned int i = 0u; i < 50; ++i)
             //window.draw(oaktree[i]);
 
@@ -169,15 +254,123 @@ int main(){
             }
         }
     }
+    for (auto& sprite : cherrytrees)
+    {
+        for (auto& otherSprite : cherrytrees)
+        {
+            if (&sprite == &otherSprite)
+          {
+                continue;
+            }
+
+            // Calculate the distance between the sprites
+            sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
+            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+
+            // If the sprites are colliding, subtract damage from the sprite's health
+            if (distance < sprite.getRadius() + otherSprite.getRadius())
+            {
+                sprite.takeDamage(std::rand() % 10 + 1);
+            }
+        }
+    }
+    for (auto& sprite : Birchtrees)
+    {
+        for (auto& otherSprite : Birchtrees)
+        {
+            if (&sprite == &otherSprite)
+            {
+                continue;
+            }
+
+            // Calculate the distance between the sprites
+            sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
+            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+
+            // If the sprites are colliding, subtract damage from the sprite's health
+            if (distance < sprite.getRadius() + otherSprite.getRadius())
+            {
+                sprite.takeDamage(std::rand() % 10 + 1);
+            }
+        }
+    }
+    for (auto& sprite : Mapletrees)
+    {
+        for (auto& otherSprite : Mapletrees)
+        {
+            if (&sprite == &otherSprite)
+            {
+                continue;
+            }
+
+            // Calculate the distance between the sprites
+            sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
+            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+
+            // If the sprites are colliding, subtract damage from the sprite's health
+            if (distance < sprite.getRadius() + otherSprite.getRadius())
+            {
+                sprite.takeDamage(std::rand() % 10 + 1);
+            }
+        }
+    }
+    for (auto& sprite : bonetrees)
+    {
+        for (auto& otherSprite : bonetrees)
+        {
+            if (&sprite == &otherSprite)
+            {
+                continue;
+            }
+
+            // Calculate the distance between the sprites
+            sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
+            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+
+            // If the sprites are colliding, subtract damage from the sprite's health
+            if (distance < sprite.getRadius() + otherSprite.getRadius())
+            {
+                sprite.takeDamage(std::rand() % 10 + 1);
+            }
+        }
+    }
+    
     // Remove any sprites whose health has reached 0 or less
     oaktrees.erase(std::remove_if(oaktrees.begin(), oaktrees.end(), [](const Object& sprite) {
         return !sprite.isAlive();
     }), oaktrees.end());
-          for (auto& sprite : oaktrees)
+    cherrytrees.erase(std::remove_if(cherrytrees.begin(), cherrytrees.end(), [](const Object& sprite) {
+        return !sprite.isAlive();
+    }), cherrytrees.end());
+    Birchtrees.erase(std::remove_if(Birchtrees.begin(), Birchtrees.end(), [](const Object& sprite) {
+        return !sprite.isAlive();
+    }), Birchtrees.end());
+    Mapletrees.erase(std::remove_if(Mapletrees.begin(), Mapletrees.end(), [](const Object& sprite) {
+        return !sprite.isAlive();
+    }), Mapletrees.end());
+    bonetrees.erase(std::remove_if(bonetrees.begin(), bonetrees.end(), [](const Object& sprite) {
+        return !sprite.isAlive();
+    }), bonetrees.end());
+    for (auto& sprite : oaktrees)
     {
         sprite.draw(window);
     }
-   
+    for (auto& sprites : cherrytrees)
+    {
+        sprites.draw(window);
+    }
+    for (auto& sprites : Birchtrees)
+    {
+        sprites.draw(window);
+    }
+    for (auto& sprites : Mapletrees)
+    {
+        sprites.draw(window);
+    }
+    for (auto& sprites : bonetrees)
+    {
+        sprites.draw(window);
+    }
         window.display();
     }
     return 0;
