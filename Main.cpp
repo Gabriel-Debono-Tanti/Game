@@ -99,24 +99,24 @@ int main(){
     std::vector<Object> bonetrees;
         for (int i = 0; i < 200; ++i)
          {
-            int x = rand()% ((int)(countryland.biome.getSize().x)/2+30-(int)(countryland.biome.getPosition().x) - 1) + countryland.biome.getPosition().x;
-            int y = rand()% ((int)(countryland.biome.getSize().y)+260-(int)(countryland.biome.getPosition().y) - 1) + countryland.biome.getPosition().y;
+            int x = rand()% ((int)(countryland.biome.getSize().x +countryland.biome.getPosition().x)-50-(int)(countryland.biome.getPosition().x) - 1) + countryland.biome.getPosition().x;
+            int y = rand()% ((int)(countryland.biome.getSize().y+countryland.biome.getPosition().y)-60-(int)(countryland.biome.getPosition().y) - 1) + countryland.biome.getPosition().y;
             Object tree(t, Vector2f((x), (y)), 500);
         // Push the sprite into the vector
             oaktrees.push_back(tree);
         }
         for (int i = 0; i < 200; ++i)
          {
-            int x = rand()% ((int)(CherryWoods.biome.getSize().x)/2+30-(int)(CherryWoods.biome.getPosition().x) - 1) + CherryWoods.biome.getPosition().x;
-            int y = rand()% ((int)(CherryWoods.biome.getSize().y)/6-100-(int)(CherryWoods.biome.getPosition().y) - 1) + CherryWoods.biome.getPosition().y;
+            int x = rand()% ((int)(CherryWoods.biome.getSize().x +CherryWoods.biome.getPosition().x)-50-(int)(CherryWoods.biome.getPosition().x) - 1) + CherryWoods.biome.getPosition().x;
+            int y = rand()% ((int)(CherryWoods.biome.getSize().y +CherryWoods.biome.getPosition().y)-60-(int)(CherryWoods.biome.getPosition().y) - 1) + CherryWoods.biome.getPosition().y;
             Object tree(cherryt, Vector2f((x), (y)), 10000);
         // Push the sprite into the vector
             cherrytrees.push_back(tree);
         }
         for (int i = 0; i < 200; ++i)
          {
-            int x = rand()% ((int)(birchforest.biome.getSize().x)/15-300-(int)(birchforest.biome.getPosition().x) - 1) + birchforest.biome.getPosition().x;
-            int y = rand()% ((int)(birchforest.biome.getSize().y)/100-330-(int)(birchforest.biome.getPosition().y) - 1) + birchforest.biome.getPosition().y;
+            int x = rand()% ((int)(birchforest.biome.getSize().x+birchforest.biome.getPosition().x)-50-(int)(birchforest.biome.getPosition().x) - 1) + birchforest.biome.getPosition().x;
+            int y = rand()% ((int)(birchforest.biome.getSize().y+birchforest.biome.getPosition().y)-60-(int)(birchforest.biome.getPosition().y) - 1) + birchforest.biome.getPosition().y;
             Object tree(Bircht, Vector2f((x), (y)), 10000);
         // Push the sprite into the vector
             Birchtrees.push_back(tree);
@@ -124,16 +124,16 @@ int main(){
         
         for (int i = 0; i < 200; ++i)
          {
-            int x = rand()% ((int)(mapleforest.biome.getSize().x)/2-(int)(mapleforest.biome.getPosition().x) - 1) + mapleforest.biome.getPosition().x + 100;
-            int y = rand()% ((int)(mapleforest.biome.getSize().y)/100-330-(int)(mapleforest.biome.getPosition().y) - 1) + mapleforest.biome.getPosition().y;
+            int x = rand()% ((int)(mapleforest.biome.getSize().x+mapleforest.biome.getPosition().x)-90-(int)(mapleforest.biome.getPosition().x) - 1) + mapleforest.biome.getPosition().x + 70;
+            int y = rand()% ((int)(mapleforest.biome.getSize().y+mapleforest.biome.getPosition().y)-150-(int)(mapleforest.biome.getPosition().y) - 1) + mapleforest.biome.getPosition().y;
             Object tree(Maplet, Vector2f((x), (y)), 10000);
         // Push the sprite into the vector
             Mapletrees.push_back(tree);
         }
         for (int i = 0; i < 200; ++i)
          {
-            int x = rand()% ((int)(DeathD.biome.getSize().x)/2-850-(int)(DeathD.biome.getPosition().x) - 1) + DeathD.biome.getPosition().x;
-            int y = rand()% ((int)(DeathD.biome.getSize().y)/2+120-(int)(DeathD.biome.getPosition().y) - 1) + DeathD.biome.getPosition().y;
+            int x = rand()% ((int)(DeathD.biome.getSize().x+DeathD.biome.getPosition().x)-50-(int)(DeathD.biome.getPosition().x) - 1) + DeathD.biome.getPosition().x;
+            int y = rand()% ((int)(DeathD.biome.getSize().y+DeathD.biome.getPosition().y)-60-(int)(DeathD.biome.getPosition().y) - 1) + DeathD.biome.getPosition().y;
             Object tree(bonet, Vector2f((x), (y)), 1000);
         // Push the sprite into the vector
             bonetrees.push_back(tree);
