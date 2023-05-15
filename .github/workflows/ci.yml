@@ -76,13 +76,15 @@ jobs:
            cp /usr/local/lib/libsfml-system.2.5.dylib .
     
     - name: Set Runtime Path
-      run: install_name_tool -add_rpath "@executable_path/" Game
+      run: |
+           install_name_tool -add_rpath "@executable_path/" Game
+           echo "::set-env name=DYLD_LIBRARY_PATH::$(pwd)"
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: mac-x86_64
         path: |
-              ./Game
+              Game
               libsfml-graphics.2.5.dylib
               libsfml-window.2.5.dylib
               libsfml-system.2.5.dylib
