@@ -12,7 +12,7 @@ endif
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
     CCFLAGS += -D LINUX
-	LIBS := -Lsrc/libLinux/ $(LIBS)
+	LIBS := -Lsrc/LibLinux/ $(LIBS)
 endif
 ifeq ($(UNAME_S),Darwin)
     CCFLAGS += -D OSX
