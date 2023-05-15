@@ -82,7 +82,7 @@ jobs:
       with:
         name: mac-x86_64
         path: |
-              Game
+              ./Game
               libsfml-graphics.dylib
               libsfml-window.dylib
               libsfml-system.dylib
