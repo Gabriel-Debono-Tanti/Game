@@ -71,9 +71,9 @@ jobs:
     
     - name: Package
       run: |
-           cp /usr/local/lib/libsfml-graphics.dylib .
-           cp /usr/local/lib/libsfml-window.dylib .
-           cp /usr/local/lib/libsfml-system.dylib .
+           cp /usr/local/lib/libsfml-graphics.2.5.dylib .
+           cp /usr/local/lib/libsfml-window.2.5.dylib .
+           cp /usr/local/lib/libsfml-system.2.5.dylib .
     
     - name: Set Runtime Path
       run: install_name_tool -add_rpath "@executable_path/" Game
@@ -83,8 +83,8 @@ jobs:
         name: mac-x86_64
         path: |
               ./Game
-              libsfml-graphics.dylib
-              libsfml-window.dylib
-              libsfml-system.dylib
+              libsfml-graphics.2.5.dylib
+              libsfml-window.2.5.dylib
+              libsfml-system.2.5.dylib
         if-no-files-found: error
  
