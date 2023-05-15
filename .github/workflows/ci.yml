@@ -31,8 +31,7 @@ jobs:
       with:
         submodules: recursive
 
-    - name: install SFML
-      run: sudo apt-get install libsfml-dev
+   
 
     - name: Build
       run: make
