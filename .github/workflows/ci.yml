@@ -37,9 +37,9 @@ jobs:
     - name: Build
       run: make
     - name: Package
-      run: cp ./usr/lib/x86_64-linux-gnu/libsfml-graphics.so 
-           cp ./usr/lib/x86_64-linux-gnu/libsfml-window.so 
-           cp ./usr/lib/x86_64-linux-gnu/libsfml-system.so 
+      run: cp /usr/lib/x86_64-linux-gnu/libsfml-graphics.so .
+           cp /usr/lib/x86_64-linux-gnu/libsfml-window.so .
+           cp /usr/lib/x86_64-linux-gnu/libsfml-system.so .
            
     - name: Set Runtime Path
       run: patchelf --set-rpath '$ORIGIN' Game
