@@ -36,12 +36,24 @@ jobs:
 
     - name: Build
       run: make
-
+    - name: Package
+      run: |
+           cp /usr/lib/x86_64-linux-gnu/libsfml-graphics.so .
+           cp /usr/lib/x86_64-linux-gnu/libsfml-window.so .
+           cp /usr/lib/x86_64-linux-gnu/libsfml-system.so .
+           
+    - name: Set Runtime Path
+      run: patchelf --set-rpath '$ORIGIN' Game
+      
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: linux-x86_64
-        path: ./Game
+        path: |
+              Game
+              libsfml-graphics.so
+              libsfml-window.so
+              libsfml-system.so
         if-no-files-found: error
  
   macos-x86_64:
@@ -56,11 +68,24 @@ jobs:
 
     - name: Build
       run: make
-
+    
+    - name: Package
+      run: |
+           cp /usr/local/lib/libsfml-graphics.2.5.dylib .
+           cp /usr/local/lib/libsfml-window.2.5.dylib .
+           cp /usr/local/lib/libsfml-system.2.5.dylib .
+    
+    - name: Set Runtime Path
+      run: |
+           install_name_tool -add_rpath "@executable_path/" Game
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: mac-x86_64
-        path: ./Game
+        path: |
+              Game
+              libsfml-graphics.2.5.dylib
+              libsfml-window.2.5.dylib
+              libsfml-system.2.5.dylib
         if-no-files-found: error
  
