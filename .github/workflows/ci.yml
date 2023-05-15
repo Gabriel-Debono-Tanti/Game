@@ -56,7 +56,8 @@ jobs:
 
     - name: Build
       run: make
-
+    - name: Set Runtime Path
+      run: install_name_tool -add_rpath "@executable_path/" Game
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
