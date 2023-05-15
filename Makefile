@@ -9,6 +9,16 @@ ifeq ($(OS),Windows_NT)
 	TARGET = Game.exe
 endif
 
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+    CCFLAGS += -D LINUX
+	LIBS := -Lsrc/libLinux/ $(LIBS)
+endif
+ifeq ($(UNAME_S),Darwin)
+    CCFLAGS += -D OSX
+	LIBS := -Lsrc/libMac/ $(LIBS)
+endif
+
 $(TARGET):
 	$(CXX) $(CXX_FLAGS) -o $(TARGET) $(SRCS) $(LIBS)
 
