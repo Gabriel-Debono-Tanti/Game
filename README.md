@@ -35,3 +35,7 @@ A Small game made in SFML with the help of a few small tools that I made
 ## Contributions
 
 Well so far I have done everything all by myself. So contributions are accepted you just have to read how to contribute in [CONTRIBUTING.md](https://github.com/Gabriel-Debono-Tanti/Game/blob/main/CONTRIBUTING.md). With contributions this project will be released quicker. 
+
+## License
+
+This project uses the CC-BY-NC-ND 4.0 which means you cannot use this project for commercial use or change any of its code or art unless given permission but you can still commit to the main repository.
