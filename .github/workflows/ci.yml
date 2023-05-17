@@ -45,18 +45,22 @@ jobs:
         if-no-files-found: error
  
   macos-x86_64:
+  
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v3
       with:
         submodules: recursive
-
+    
     - name: Install SFML
-      run: brew install sfml
+      run: brew install sfml dylibbundler
 
     - name: Build
       run: make
-
+    - name: package
+      run: |
+           mkdir $dependencies
+           dylibbundler -od -b -ns -d $dependencies
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
