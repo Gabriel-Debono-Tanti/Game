@@ -7,4 +7,4 @@ chmod +x package_macos
 cp ./Game $MacOS
 
 mkdir -p $package/Contents/libs/
-dylibbundler -od -b -ns -x $macos/Game -d $package/Contents/libs/
+dylibbundler -od -b -ns -x ./Game -d $package/Contents/libs/
