@@ -59,8 +59,9 @@ jobs:
       run: make
     - name: package
       run: |
-            ./package_macos
             chmod +x package_macos 
+            ./package_macos
+            
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
