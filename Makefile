@@ -16,7 +16,7 @@ ifeq ($(UNAME_S),Linux)
 endif
 ifeq ($(UNAME_S),Darwin)
     CCFLAGS += -D OSX
-	LIBS := -Lsrc/libMac/ $(LIBS)
+	LIBS := -Lsrc/libMac/ -framework sfml-graphics -framework sfml-window -framework sfml-system
 endif
 
 $(TARGET):
