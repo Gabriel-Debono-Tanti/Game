@@ -57,10 +57,7 @@ jobs:
 
     - name: Build
       run: make
-    - name: package
-      run: |
-           mkdir $dependencies
-           dylibbundler -od -b -ns -d $dependencies
+
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
