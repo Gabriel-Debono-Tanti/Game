@@ -8,6 +8,10 @@ ifeq ($(OS),Windows_NT)
 	LIBS := -Lsrc/lib/ $(LIBS)
 	TARGET = Game.exe
 endif
+ifeq ($(OS),Darwin)
+	CXX := clang -arch arm64
+	
+endif
 
 $(TARGET):
 	$(CXX) $(CXX_FLAGS) -o $(TARGET) $(SRCS) $(LIBS)
