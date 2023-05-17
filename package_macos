@@ -1,4 +1,4 @@
-
+#!/bin/sh
 
 package=Game.app/Game.app
 MacOS=$package/Contents/MacOS
