@@ -9,11 +9,14 @@ ifeq ($(OS),Windows_NT)
 	TARGET = Game.exe
 endif
 ifeq ($(OS),Darwin)
-	CXX := clang -arch arm64
-	
+	LIBS := -Lsrc/LibMac/ $(LIBS)
 endif
 
 $(TARGET):
 	$(CXX) $(CXX_FLAGS) -o $(TARGET) $(SRCS) $(LIBS)
 
 all: $(TARGET)
+
+arm64:
+   CXX := clang -arch arm64
+   $(TARGET)
