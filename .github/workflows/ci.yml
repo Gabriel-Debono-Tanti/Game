@@ -68,4 +68,28 @@ jobs:
         name: mac-x86_64
         path: ./Game.app
         if-no-files-found: error
- 
+   
+  macos-arm64:
+  
+    runs-on: macos-11
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    
+    - name: Install SFML
+      run: brew install sfml dylibbundler
+
+    - name: Build
+      run: make arm64
+    - name: package
+      run: |
+            chmod +x package_macos 
+            ./package_macos
+            
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: mac-arm64
+        path: ./Game.app
+        if-no-files-found: error
