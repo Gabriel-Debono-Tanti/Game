@@ -1,5 +1,4 @@
 CXX = g++
-CM = clang -arch arm64
 CXX_FLAGS = -Wall -pedantic -std=c++11 -Isrc/include/
 TARGET = Game
 LIBS = -lsfml-window -lsfml-system -lsfml-graphics
@@ -17,9 +16,6 @@ $(TARGET):
 	$(CXX) $(CXX_FLAGS) -o $(TARGET) $(SRCS) $(LIBS)
 
 all: $(TARGET)
-	
-arm64:
-	$(TARGET):
-		$(CM) $(CXX_FLAGS) -o $(TARGET) $(SRCS) $(LIBS)	
+
  
    
