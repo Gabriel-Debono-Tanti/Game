@@ -17,7 +17,8 @@ $(TARGET):
 
 all: $(TARGET)
 
-arm64:  CXX := clang -arch arm64 
+arm64:
+	CXX := clang -arch arm64 
 	$(TARGET)
   
    
