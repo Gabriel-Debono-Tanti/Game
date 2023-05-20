@@ -6,5 +6,6 @@ MacOS=$package/Contents/MacOS
 mkdir -p $MacOS
 mkdir -p $libs
 cp ./Game $MacOS
+cp -r ./Art $MacOS/Art
 mkdir -p $package/Contents/libs/
 dylibbundler -od -b -ns -x $MacOS/Game -d $libs/
