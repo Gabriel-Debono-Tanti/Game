@@ -7,5 +7,6 @@ mkdir -p $MacOS
 mkdir -p $libs
 cp ./Game $MacOS
 cp -r ./Art $MacOS/Art
+cp -r ./Music $MacOS/Music
 mkdir -p $package/Contents/libs/
 dylibbundler -od -b -ns -x $MacOS/Game -d $libs/
