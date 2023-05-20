@@ -1,10 +1,11 @@
 #!/bin/sh
 
 package=Game.app/Game.app
+libs=$package/Contents/libs/
 MacOS=$package/Contents/MacOS
 mkdir -p $MacOS
-chmod +x package_macos
+mkdir -p $libs
 cp ./Game $MacOS
-
+cp -r ./Art $MacOS/Art
 mkdir -p $package/Contents/libs/
-dylibbundler -od -b -ns -x ./Game -d $package/Contents/libs/
+dylibbundler -od -b -ns -x $MacOS/Game -d $libs/
