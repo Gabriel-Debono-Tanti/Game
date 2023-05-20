@@ -82,6 +82,12 @@ int main(){
     Maplet.loadFromFile("Art/Trees/tree4.png");
     Texture bonet;
     bonet.loadFromFile("Art/Trees/bonetree.png");
+    Texture taigat;
+    taigat.loadFromFile("Art/Trees/tree3.png");
+    Texture magicalt;
+    magicalt.loadFromFile("Art/Trees/tree5.png");
+    Texture mangrovet;
+    mangrovet.loadFromFile("Art/Trees/tree7.png");
     //Sprite oaktree[100];
    // for(int i = 0; i < 100; i++){
     //    int x = rand()%(480+400 + 1) - 400;
@@ -97,6 +103,9 @@ int main(){
     std::vector<Object> Birchtrees;
     std::vector<Object> Mapletrees;
     std::vector<Object> bonetrees;
+    std::vector<Object> taigatrees;
+    std::vector<Object> magicaltrees;
+    std::vector<Object> mangrovetrees;
         for (int i = 0; i < 200; ++i)
          {
             int x = rand()% ((int)(countryland.biome.getSize().x +countryland.biome.getPosition().x)-50-(int)(countryland.biome.getPosition().x) - 1) + countryland.biome.getPosition().x;
@@ -138,7 +147,30 @@ int main(){
         // Push the sprite into the vector
             bonetrees.push_back(tree);
         }
-
+        for (int i = 0; i < 200; ++i)
+        {
+            int x = rand()% ((int)(Taiga.biome.getSize().x+Taiga.biome.getPosition().x)-50-(int)(Taiga.biome.getPosition().x) - 1) + Taiga.biome.getPosition().x;
+            int y = rand()% ((int)(Taiga.biome.getSize().y+Taiga.biome.getPosition().y)-60-(int)(Taiga.biome.getPosition().y) - 1) + Taiga.biome.getPosition().y;
+            Object tree(taigat, Vector2f((x), (y)), 1000);
+        // Push the sprite into the vector
+            taigatrees.push_back(tree);
+        }
+        for (int i = 0; i < 200; ++i)
+        {
+            int x = rand()% ((int)(magicalforest.biome.getSize().x+magicalforest.biome.getPosition().x)-50-(int)(magicalforest.biome.getPosition().x) - 1) + magicalforest.biome.getPosition().x;
+            int y = rand()% ((int)(magicalforest.biome.getSize().y+magicalforest.biome.getPosition().y)-60-(int)(magicalforest.biome.getPosition().y) - 1) + magicalforest.biome.getPosition().y;
+            Object tree(magicalt, Vector2f((x), (y)), 1000);
+        // Push the sprite into the vector
+            magicaltrees.push_back(tree);
+        }
+        for (int i = 0; i < 200; ++i)
+        {
+            int x = rand()% ((int)(Swamp.biome.getSize().x+Swamp.biome.getPosition().x)-50-(int)(Swamp.biome.getPosition().x) - 1) + Swamp.biome.getPosition().x;
+            int y = rand()% ((int)(Swamp.biome.getSize().y+Swamp.biome.getPosition().y)-60-(int)(Swamp.biome.getPosition().y) - 1) + Swamp.biome.getPosition().y;
+            Object tree(mangrovet, Vector2f((x), (y)), 1000);
+        // Push the sprite into the vector
+            mangrovetrees.push_back(tree);
+        }
     
     while (window.isOpen())
     {
@@ -202,6 +234,36 @@ int main(){
                     // destroy sprite
                             auto it = std::find_if(bonetrees.begin(), bonetrees.end(), [&sprite](const Object& s) { return &s == &sprite; });
                             bonetrees.erase(it);
+                        }
+                    }   
+                }
+                for (auto& sprite : taigatrees) {
+                    if (sprite.contains(Vector2f(mousePosF))) {
+                        sprite.takeDamage(10);
+                        if (sprite.m_health <= 0) {
+                    // destroy sprite
+                            auto it = std::find_if(taigatrees.begin(), taigatrees.end(), [&sprite](const Object& s) { return &s == &sprite; });
+                            taigatrees.erase(it);
+                        }
+                    }   
+                }
+                for (auto& sprite : magicaltrees) {
+                    if (sprite.contains(Vector2f(mousePosF))) {
+                        sprite.takeDamage(10);
+                        if (sprite.m_health <= 0) {
+                    // destroy sprite
+                            auto it = std::find_if(magicaltrees.begin(), magicaltrees.end(), [&sprite](const Object& s) { return &s == &sprite; });
+                            magicaltrees.erase(it);
+                        }
+                    }   
+                }
+                for (auto& sprite : mangrovetrees) {
+                    if (sprite.contains(Vector2f(mousePosF))) {
+                        sprite.takeDamage(10);
+                        if (sprite.m_health <= 0) {
+                    // destroy sprite
+                            auto it = std::find_if(mangrovetrees.begin(), mangrovetrees.end(), [&sprite](const Object& s) { return &s == &sprite; });
+                            mangrovetrees.erase(it);
                         }
                     }   
                 }
@@ -334,7 +396,66 @@ int main(){
             }
         }
     }
-    
+    for (auto& sprite : taigatrees)
+    {
+        for (auto& otherSprite : taigatrees)
+        {
+            if (&sprite == &otherSprite)
+            {
+                continue;
+            }
+
+            // Calculate the distance between the sprites
+            sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
+            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+
+            // If the sprites are colliding, subtract damage from the sprite's health
+            if (distance < sprite.getRadius() + otherSprite.getRadius())
+            {
+                sprite.takeDamage(std::rand() % 10 + 1);
+            }
+        }
+    }
+    for (auto& sprite : magicaltrees)
+    {
+        for (auto& otherSprite : magicaltrees)
+        {
+            if (&sprite == &otherSprite)
+            {
+                continue;
+            }
+
+            // Calculate the distance between the sprites
+            sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
+            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+
+            // If the sprites are colliding, subtract damage from the sprite's health
+            if (distance < sprite.getRadius() + otherSprite.getRadius())
+            {
+                sprite.takeDamage(std::rand() % 10 + 1);
+            }
+        }
+    }
+    for (auto& sprite : mangrovetrees)
+    {
+        for (auto& otherSprite : mangrovetrees)
+        {
+            if (&sprite == &otherSprite)
+            {
+                continue;
+            }
+
+            // Calculate the distance between the sprites
+            sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
+            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+
+            // If the sprites are colliding, subtract damage from the sprite's health
+            if (distance < sprite.getRadius() + otherSprite.getRadius())
+            {
+                sprite.takeDamage(std::rand() % 10 + 1);
+            }
+        }
+    }
     // Remove any sprites whose health has reached 0 or less
     oaktrees.erase(std::remove_if(oaktrees.begin(), oaktrees.end(), [](const Object& sprite) {
         return !sprite.isAlive();
@@ -351,6 +472,15 @@ int main(){
     bonetrees.erase(std::remove_if(bonetrees.begin(), bonetrees.end(), [](const Object& sprite) {
         return !sprite.isAlive();
     }), bonetrees.end());
+    taigatrees.erase(std::remove_if(taigatrees.begin(), taigatrees.end(), [](const Object& sprite) {
+        return !sprite.isAlive();
+    }), taigatrees.end());
+     magicaltrees.erase(std::remove_if(magicaltrees.begin(), magicaltrees.end(), [](const Object& sprite) {
+        return !sprite.isAlive();
+    }), magicaltrees.end());
+     mangrovetrees.erase(std::remove_if(mangrovetrees.begin(), mangrovetrees.end(), [](const Object& sprite) {
+        return !sprite.isAlive();
+    }), mangrovetrees.end());
     for (auto& sprite : oaktrees)
     {
         sprite.draw(window);
@@ -368,6 +498,18 @@ int main(){
         sprites.draw(window);
     }
     for (auto& sprites : bonetrees)
+    {
+        sprites.draw(window);
+    }
+    for (auto& sprites : taigatrees)
+    {
+        sprites.draw(window);
+    }
+    for (auto& sprites : magicaltrees)
+    {
+        sprites.draw(window);
+    }
+    for (auto& sprites : mangrovetrees)
     {
         sprites.draw(window);
     }
