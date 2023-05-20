@@ -5,6 +5,6 @@ MacOS=$package/Contents/MacOS
 mkdir -p $MacOS
 chmod +x package_macos
 cp ./Game $MacOS
-cp Art $MacOS
+
 mkdir -p $package/Contents/libs/
 dylibbundler -od -b -ns -x ./Game -d $package/Contents/libs/
