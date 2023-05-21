@@ -16,7 +16,10 @@ jobs:
 
     - name: Build
       run: make
-      
+    - name: Copy DLLs to artifact
+      run: |
+          mkdir artifact
+          find path/to/source/folder -name "*.dll" -exec cp {} artifact/ \;
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -25,7 +28,7 @@ jobs:
             ./Game.exe
             ./Art
             ./Music
-            dependencies/*.dll
+            artifact
         if-no-files-found: error
 
   linux-x86_64:
