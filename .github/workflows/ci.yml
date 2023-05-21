@@ -16,10 +16,7 @@ jobs:
 
     - name: Build
       run: make
-    - name: Copying Arts
-      run: |
-           cp -r Art artifacts/
-           cp -r Music artifacts/
+      
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
