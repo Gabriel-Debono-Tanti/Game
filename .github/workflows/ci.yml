@@ -21,7 +21,9 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: windows-x86_64
-        path: ./Game.exe
+        path: |
+              ./Game.exe
+              cp -r /dependencies ./windows-x86_64
         if-no-files-found: error
 
   linux-x86_64:
