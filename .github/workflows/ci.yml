@@ -28,7 +28,7 @@ jobs:
             ./Game.exe
             ./Art
             ./Music
-            artifact
+            ./artifact
         if-no-files-found: error
 
   linux-x86_64:
