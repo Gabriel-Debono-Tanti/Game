@@ -40,7 +40,8 @@ jobs:
 
     - name: Build
       run: make
-
+    - name: Package Dependencies
+      run: ldd ./chip-8 | awk 'NF == 4 { system("echo Copying " $3 " && cp " $3 " ./") }'
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
