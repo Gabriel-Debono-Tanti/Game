@@ -48,7 +48,7 @@ jobs:
         name: linux-x86_64
         path: |
               ./Game
-              ./src/libLinux/
+              ./src/LibLinux/
         
         if-no-files-found: error
  
