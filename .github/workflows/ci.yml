@@ -46,7 +46,10 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: linux-x86_64
-        path: ./Game
+        path: |
+              ./Game
+              ./src/libLinux/
+        
         if-no-files-found: error
  
   macos-x86_64:
