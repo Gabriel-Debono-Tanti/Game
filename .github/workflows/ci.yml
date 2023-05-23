@@ -19,15 +19,16 @@ jobs:
     - name: Package
       run: |
             cp -r ./Art ./dependencies
+            cp -r ./Music ./dependencies
+            cp -r ./Game.exe ./dependencies
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: windows-x86_64
         path: | 
-             ./Game.exe
+
              ./dependencies/
-             ./Art
-             ./Music
+ 
         if-no-files-found: error
 
   linux-x86_64:
