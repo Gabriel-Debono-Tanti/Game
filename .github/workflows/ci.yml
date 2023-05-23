@@ -41,14 +41,13 @@ jobs:
     - name: Build
       run: make
     - name: Package Dependencies
-      run: ldd ./chip-8 | awk 'NF == 4 { system("echo Copying " $3 " && cp " $3 " ./") }'
+      run: ./package_win
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: linux-x86_64
         path: |
-              ./Game
-              ./src/LibLinux/
+              ./Isle_Valley-x86_64.AppImage
         
         if-no-files-found: error
  
