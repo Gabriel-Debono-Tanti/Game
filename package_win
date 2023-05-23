@@ -1,4 +1,4 @@
-Win = Win/Windows
+Win = Win/Win
 
 mkdir -p $Win
 cp -r ./dependencies/*.dll $Win/
