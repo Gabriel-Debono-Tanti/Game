@@ -1,0 +1,7 @@
+Win = ./Windows
+
+mkdir $Win
+cp ./dependencies/*.dll $Win
+cp ./Art $Win
+cp ./Music $Win
+cp ./Game.exe $Win
