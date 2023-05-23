@@ -4,3 +4,4 @@ mkdir artifact
 cp -r ./Game.exe artifact
 cp -r ./Art artifact/Art
 cp -r ./Music artifact/Music
+cp -r ./dependencies artifact
