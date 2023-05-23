@@ -16,7 +16,9 @@ jobs:
 
     - name: Build
       run: make
-    
+    - name: Package
+      run: |
+            cp -r ./Art ./dependencies
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
