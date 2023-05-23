@@ -1,0 +1,56 @@
+add()
+{
+  echo "adding $1"
+
+  if [ -e "/usr/lib/x86_64-linux-gnu/$1" ]; then
+      src="/usr/lib/x86_64-linux-gnu"
+  elif [ -e "/usr/lib/x86_64-linux-gnu/libsfml-dev/$1" ]; then
+      src="/usr/lib/x86_64-linux-gnu/libsfml-dev"
+  elif [ -e "/usr/lib64/$1" ]; then
+      src="/usr/lib64"
+  fi
+
+  if [ $src != $out ]; then
+      cp "$src/$1" "$out/$1"
+  fi
+
+  dependencies=$(readelf -d "$src/$1" | grep NEEDED | sed -En "s/[^\[]*\[([^]]*)\S*/\1/gp")
+
+  for dependency in $dependencies
+  do
+    if [ ! -f "$out/$dependency" ]; then
+        add $dependency
+    fi
+  done
+}
+
+out=$(pwd)
+src=$(pwd)
+
+add "Game"
+
+rm libc.so*
+rm libpthread.so*
+rm librt.so*
+rm libstdc++.so*
+
+chmod +x Game
+
+mkdir Isle_Valley
+mkdir Isle_Valley/usr
+mkdir Isle_Valley/usr/bin
+mkdir Isle_Valley/usr/lib
+
+
+
+mv Game Isle_Valley/usr/bin
+mv data Isle_Valley/usr/bin
+mv *.so* Isle_Valley/usr/lib
+
+wget https://github.com/AppImage/AppImageKit/releases/download/13/AppRun-x86_64 -O Isle_Valley/AppRun
+chmod +x Isle_Valley/AppRun
+
+wget https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage -O appimagetool
+chmod +x appimagetool
+
+./appimagetool Isle_Valley

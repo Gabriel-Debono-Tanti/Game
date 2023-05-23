@@ -16,16 +16,19 @@ jobs:
 
     - name: Build
       run: make
-      
+    - name: Package
+      run: |
+            cp -r ./Art ./dependencies
+            cp -r ./Music ./dependencies
+            cp -r ./Game.exe ./dependencies
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: windows-x86_64
         path: | 
-            ./Game.exe
-            ./Art
-            ./Music
-            ./dependencies/*
+
+             ./dependencies/
+ 
         if-no-files-found: error
 
   linux-x86_64:
@@ -40,12 +43,14 @@ jobs:
 
     - name: Build
       run: make
-
+ 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: linux-x86_64
-        path: ./Game
+        path: |
+              ./Game
+        
         if-no-files-found: error
  
   macos-x86_64:
