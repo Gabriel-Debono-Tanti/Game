@@ -24,7 +24,7 @@ jobs:
       with:
         name: windows-x86_64
         path: | 
-             ./Win
+             ./Game.win
         if-no-files-found: error
 
   linux-x86_64:
