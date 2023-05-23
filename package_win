@@ -1,7 +1,9 @@
-Win = Win/Win
+#!/bin/sh
 
+package=Game.win/Game.win
+Win=$package/Win
 mkdir -p $Win
-cp -r ./dependencies/*.dll $Win/
+cp ./Game.exe $Win
 cp -r ./Art $Win/Art
-cp -r ./Music $Win/Art
-cp -r ./Game.exe $Win/
+cp -r ./Music $Win/Music
+cp -r ./dependencies $Win/
