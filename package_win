@@ -3,7 +3,7 @@
 package=Game.win/Game.win
 Win=$package/Win
 mkdir -p $Win
-cp ./Game.exe $Win
+cp -r ./Game.exe $Win
 cp -r ./Art $Win/Art
 cp -r ./Music $Win/Music
 cp -r ./dependencies $Win/
