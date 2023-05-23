@@ -16,16 +16,15 @@ jobs:
 
     - name: Build
       run: make
- 
+    - name: Package
+      run: | 
+           ./package_win
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: windows-x86_64
         path: | 
-            ./Game.exe
-            ./Art
-            ./Music
-             dependencies/**.dll
+            ./Win
         if-no-files-found: error
 
   linux-x86_64:
