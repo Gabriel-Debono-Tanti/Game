@@ -1,7 +1,7 @@
 Win = ./Windows
 
-mkdir $Win
-cp ./dependencies/*.dll $Win
-cp ./Art $Win
-cp ./Music $Win
-cp ./Game.exe $Win
+mkdir -p $Win
+cp -r ./dependencies/*.dll $Win/
+cp -r ./Art $Win/Art
+cp -r ./Music $Win/Art
+cp -r ./Game.exe $Win/
