@@ -37,7 +37,9 @@ jobs:
     - uses: actions/checkout@v3
       with:
         submodules: recursive
-
+    - name: Install dependencies
+      run: |
+          sudo apt-get update
     - name: install SFML
       run: sudo apt-get install libsfml-dev
 
