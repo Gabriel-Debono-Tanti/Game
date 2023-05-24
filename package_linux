@@ -1,0 +1,8 @@
+Linux = ./Game.AppDir
+bin = $Linux/usr/bin
+
+mkdir $Linux
+mkdir -p $bin
+
+cp -r ./src/LibLinux $bin/
+cp -r     $Linux/
