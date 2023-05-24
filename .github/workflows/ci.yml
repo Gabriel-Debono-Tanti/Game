@@ -1,5 +1,5 @@
 name: C/C++ CI
-
+ 
 on:
   push:
     branches: [ "main" ]
@@ -16,12 +16,19 @@ jobs:
 
     - name: Build
       run: make
-
+    - name: Package
+      run: |
+            cp -r ./Art ./dependencies
+            cp -r ./Music ./dependencies
+            cp -r ./Game.exe ./dependencies
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: windows-x86_64
-        path: ./Game.exe
+        path: | 
+
+             ./dependencies/
+ 
         if-no-files-found: error
 
   linux-x86_64:
@@ -30,18 +37,22 @@ jobs:
     - uses: actions/checkout@v3
       with:
         submodules: recursive
-
+    - name: Install dependencies
+      run: |
+          sudo apt-get update
     - name: install SFML
       run: sudo apt-get install libsfml-dev
 
     - name: Build
       run: make
-
+ 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: linux-x86_64
-        path: ./Game
+        path: |
+              ./Game
+        
         if-no-files-found: error
  
   macos-x86_64:
