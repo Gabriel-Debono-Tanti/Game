@@ -67,7 +67,7 @@ jobs:
         name: linux-x86_64
         path: |
           
-              Game/game.AppImage
+              Game/game
         
         if-no-files-found: error
  
