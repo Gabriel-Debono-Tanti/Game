@@ -1,7 +1,7 @@
 Linux = Game.AppDir/Game.AppDir
 bin = $Linux/usr/bin
 
-mkdir $Linux
+mkdir -p $Linux
 mkdir -p $bin
 
 cp -r ./Game $bin/
