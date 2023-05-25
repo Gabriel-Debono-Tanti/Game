@@ -43,20 +43,12 @@ jobs:
     - name: install SFML
       run: sudo apt-get install libsfml-dev
     
-    - name: Clone repository
-      run: git clone https://github.com/DimensionalSpace/Game.git
 
     
     - name: Build
-      run: |
-           cd Game
+      run:
            make
-    - name: Create AppImage
-      run: |
-          cd Game
-          wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
-          chmod +x appimagetool-x86_64.AppImage
-          ./appimagetool-x86_64.AppImage game
+
 
 
 
@@ -67,7 +59,7 @@ jobs:
         name: linux-x86_64
         path: |
           
-              Game/game
+              Game
         
         if-no-files-found: error
  
