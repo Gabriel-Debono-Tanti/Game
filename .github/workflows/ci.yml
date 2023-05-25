@@ -50,7 +50,7 @@ jobs:
 
     - name: Package
       run: | 
-            chmod +x pacakage_linux
+            chmod +x package_linux
             ./package_linux
 
 
