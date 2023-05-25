@@ -46,11 +46,12 @@ jobs:
 
     
     - name: Build
-      run:
-           make
+      run: make
 
-
-
+    - name: Package
+      run: | 
+            chmod +x pacakage_linux
+            ./package_linux
 
 
     - name: Upload Artifacts
@@ -58,8 +59,7 @@ jobs:
       with:
         name: linux-x86_64
         path: |
-          
-              Game
+              ./Game
         
         if-no-files-found: error
  
