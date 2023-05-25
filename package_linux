@@ -1,4 +1,4 @@
-Linux = ./Game.AppDir
+Linux = Game.AppDir/Game.AppDir
 bin = $Linux/usr/bin
 
 mkdir $Linux
