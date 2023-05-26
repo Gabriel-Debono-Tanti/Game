@@ -56,7 +56,7 @@ jobs:
              mkdir game/usr/
              mkdir game/usr/bin/
              cp ./Game game/usr/bin/
-            cp ./Game.desktop game/
+            cp ./game.desktop game/
             echo -e "#!/bin/sh\n\
             HERE=\"\$(dirname \"\$(readlink -f \"\${0}\")\")\"\n\
             EXEC=\"\${HERE}/usr/bin/Game\"\n\
