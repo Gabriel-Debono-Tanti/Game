@@ -63,7 +63,7 @@ jobs:
             exec \"\${EXEC}\"" >> game/AppRun
             chmod a+x game/AppRun
             chmod a+x game/usr/bin/Game
-            mv csp game.AppDir
+            mv game game.AppDir
             ARCH=x86_64 appimagetool game.AppDir
 
 
@@ -72,7 +72,7 @@ jobs:
       with:
         name: linux-x86_64
         path: |
-              ./Game
+              ./game-x86_64.AppImage
         
         if-no-files-found: error
  
