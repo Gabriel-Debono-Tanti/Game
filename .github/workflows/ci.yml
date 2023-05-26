@@ -57,10 +57,7 @@ jobs:
              mkdir game/usr/bin/
              cp ./Game game/usr/bin/
             cp ./game.desktop game/
-            echo -e "#!/bin/sh\n\
-            HERE=\"\$(dirname \"\$(readlink -f \"\${0}\")\")\"\n\
-            EXEC=\"\${HERE}/usr/bin/Game\"\n\
-            exec \"\${EXEC}\"" >> game/AppRun
+            cp ./AppRun game/
             chmod a+x game/AppRun
             chmod a+x game/usr/bin/Game
             mv game game.AppDir
