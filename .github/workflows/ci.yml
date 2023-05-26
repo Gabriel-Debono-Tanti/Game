@@ -25,8 +25,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: windows-x86_64
-        path: | 
-
+        path: |
              ./dependencies/
  
         if-no-files-found: error
@@ -53,8 +52,19 @@ jobs:
 
     - name: Package
       run: | 
-            chmod +x package_linux
-            ./package_linux
+            mkdir game
+             mkdir game/usr/
+             mkdir game/usr/bin/
+             cp ./Game game/usr/bin/
+            cp ./Game.desktop game/
+            echo -e "#!/bin/sh\n\
+            HERE=\"\$(dirname \"\$(readlink -f \"\${0}\")\")\"\n\
+            EXEC=\"\${HERE}/usr/bin/Game\"\n\
+            exec \"\${EXEC}\"" >> game/AppRun
+            chmod a+x game/AppRun
+            chmod a+x game/usr/bin/Game
+            mv csp game.AppDir
+            ARCH=x86_64 appimagetool game.AppDir
 
 
     - name: Upload Artifacts
