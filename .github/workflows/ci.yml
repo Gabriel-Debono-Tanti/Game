@@ -40,6 +40,9 @@ jobs:
     - name: Install dependencies
       run: |
           sudo apt-get update
+          curl -L https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage --output ./appimagetool
+          chmod a+x ./appimagetool
+          sudo mv appimagetool /usr/local/bin/appimagetool
     - name: install SFML
       run: sudo apt-get install libsfml-dev
     
