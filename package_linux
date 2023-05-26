@@ -8,8 +8,7 @@ cp -r ./Game $bin/
 cp -r ./src/LibLinux $bin/
 cp -r  ./AppRun $Linux/
 cp -r  ./game.desktop $Linux/
-exec \"\${EXEC}\"" >> $Linux/AppRun
 chmod a+x $Linux/AppRun
 chmod a+x $bin/csprite
 mv csp $Linux
-ARCH=x86_64 appimagetool $Linux
+ARCH=x86_64 appimagetool Game.AppDir
