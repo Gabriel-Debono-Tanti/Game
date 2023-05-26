@@ -73,7 +73,7 @@ jobs:
         name: linux-x86_64
         path: |
               ./game-x86_64.AppImage
-        
+              ./game.AppDir
         if-no-files-found: error
  
   macos-x86_64:
