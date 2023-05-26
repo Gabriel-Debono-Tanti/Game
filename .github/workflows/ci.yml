@@ -58,6 +58,8 @@ jobs:
              mkdir game/usr/bin/
              cp ./Game game/usr/bin/
             cp -r ./src/LibLinux/**.so game/usr/bin/
+            cp -r ./src/LibLinux/**.so.2.5 game/usr/bin/
+            cp -r ./src/LibLinux/**.so.2.5.1 game/usr/bin/
             cp ./game.desktop game/
             cp ./AppRun game/
             cp ./icon.png game/
