@@ -57,6 +57,7 @@ jobs:
              mkdir game/usr/
              mkdir game/usr/bin/
              cp ./Game game/usr/bin/
+            cp -r ./src/LibLinux game/usr/bin/
             cp ./game.desktop game/
             cp ./AppRun game/
             cp ./icon.png game/
