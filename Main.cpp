@@ -331,7 +331,7 @@ int main(){
 
             // Calculate the distance between the sprites
             sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
-            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+            float distance = sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
 
             // If the sprites are colliding, subtract damage from the sprite's health
             if (distance < sprite.getRadius() + otherSprite.getRadius())
@@ -351,7 +351,7 @@ int main(){
 
             // Calculate the distance between the sprites
             sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
-            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+            float distance = sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
 
             // If the sprites are colliding, subtract damage from the sprite's health
             if (distance < sprite.getRadius() + otherSprite.getRadius())
@@ -371,7 +371,7 @@ int main(){
 
             // Calculate the distance between the sprites
             sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
-            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+            float distance = sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
 
             // If the sprites are colliding, subtract damage from the sprite's health
             if (distance < sprite.getRadius() + otherSprite.getRadius())
@@ -391,7 +391,7 @@ int main(){
 
             // Calculate the distance between the sprites
             sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
-            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+            float distance = sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
 
             // If the sprites are colliding, subtract damage from the sprite's health
             if (distance < sprite.getRadius() + otherSprite.getRadius())
@@ -411,7 +411,7 @@ int main(){
 
             // Calculate the distance between the sprites
             sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
-            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+            float distance = sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
 
             // If the sprites are colliding, subtract damage from the sprite's health
             if (distance < sprite.getRadius() + otherSprite.getRadius())
@@ -431,7 +431,7 @@ int main(){
 
             // Calculate the distance between the sprites
             sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
-            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+            float distance = sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
 
             // If the sprites are colliding, subtract damage from the sprite's health
             if (distance < sprite.getRadius() + otherSprite.getRadius())
@@ -451,7 +451,7 @@ int main(){
 
             // Calculate the distance between the sprites
             sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
-            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+            float distance = sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
 
             // If the sprites are colliding, subtract damage from the sprite's health
             if (distance < sprite.getRadius() + otherSprite.getRadius())
@@ -471,7 +471,7 @@ int main(){
 
             // Calculate the distance between the sprites
             sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
-            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+            float distance = sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
 
             // If the sprites are colliding, subtract damage from the sprite's health
             if (distance < sprite.getRadius() + otherSprite.getRadius())
@@ -491,7 +491,7 @@ int main(){
 
             // Calculate the distance between the sprites
             sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
-            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+            float distance = sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
 
             // If the sprites are colliding, subtract damage from the sprite's health
             if (distance < sprite.getRadius() + otherSprite.getRadius())
