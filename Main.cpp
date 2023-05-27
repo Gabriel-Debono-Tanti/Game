@@ -2,7 +2,7 @@
 #include "Biome.hpp"
 #include "Object.hpp"
 
-#include "JSONlibrary/json.hpp"
+
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -44,7 +44,10 @@ Biome Swamp(Vector2f(500, 500), swa);
 Biome Al(Vector2f(650, 650), a);
 Biome Com(Vector2f(600, 600), co);
 int main(){
-     
+    
+    
+    
+
     time_t now = time(0);
     tm *ltm = localtime(&now);
     sf::View view1;
@@ -88,6 +91,8 @@ int main(){
     magicalt.loadFromFile("Art/Trees/tree5.png");
     Texture mangrovet;
     mangrovet.loadFromFile("Art/Trees/tree7.png");
+    Texture Icespiket;
+    Icespiket.loadFromFile("Art/Trees/ICESPIKE.png");
     //Sprite oaktree[100];
    // for(int i = 0; i < 100; i++){
     //    int x = rand()%(480+400 + 1) - 400;
@@ -106,6 +111,7 @@ int main(){
     std::vector<Object> taigatrees;
     std::vector<Object> magicaltrees;
     std::vector<Object> mangrovetrees;
+    std::vector<Object> Icespikes;
         for (int i = 0; i < 200; ++i)
          {
             int x = rand()% ((int)(countryland.biome.getSize().x +countryland.biome.getPosition().x)-50-(int)(countryland.biome.getPosition().x) - 1) + countryland.biome.getPosition().x;
@@ -170,6 +176,14 @@ int main(){
             Object tree(mangrovet, Vector2f((x), (y)), 1000);
         // Push the sprite into the vector
             mangrovetrees.push_back(tree);
+        }
+        for (int i = 0; i < 200; ++i)
+        {
+            int x = rand()% ((int)(cold.biome.getSize().x+cold.biome.getPosition().x)-50-(int)(cold.biome.getPosition().x) - 1) + cold.biome.getPosition().x;
+            int y = rand()% ((int)(cold.biome.getSize().y+cold.biome.getPosition().y)-200-(int)(cold.biome.getPosition().y) - 1) + cold.biome.getPosition().y;
+            Object tree(Icespiket, Vector2f((x), (y)), 1000);
+        // Push the sprite into the vector
+            Icespikes.push_back(tree);
         }
     
     while (window.isOpen())
@@ -264,6 +278,16 @@ int main(){
                     // destroy sprite
                             auto it = std::find_if(mangrovetrees.begin(), mangrovetrees.end(), [&sprite](const Object& s) { return &s == &sprite; });
                             mangrovetrees.erase(it);
+                        }
+                    }   
+                }
+                for (auto& sprite : Icespikes) {
+                    if (sprite.contains(Vector2f(mousePosF))) {
+                        sprite.takeDamage(10);
+                        if (sprite.m_health <= 0) {
+                    // destroy sprite
+                            auto it = std::find_if(Icespikes.begin(), Icespikes.end(), [&sprite](const Object& s) { return &s == &sprite; });
+                            Icespikes.erase(it);
                         }
                     }   
                 }
@@ -456,6 +480,26 @@ int main(){
             }
         }
     }
+    for (auto& sprite : Icespikes)
+    {
+        for (auto& otherSprite : Icespikes)
+        {
+            if (&sprite == &otherSprite)
+            {
+                continue;
+            }
+
+            // Calculate the distance between the sprites
+            sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
+            float distance = std::sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+
+            // If the sprites are colliding, subtract damage from the sprite's health
+            if (distance < sprite.getRadius() + otherSprite.getRadius())
+            {
+                sprite.takeDamage(std::rand() % 10 + 1);
+            }
+        }
+    }
     // Remove any sprites whose health has reached 0 or less
     oaktrees.erase(std::remove_if(oaktrees.begin(), oaktrees.end(), [](const Object& sprite) {
         return !sprite.isAlive();
@@ -481,6 +525,9 @@ int main(){
      mangrovetrees.erase(std::remove_if(mangrovetrees.begin(), mangrovetrees.end(), [](const Object& sprite) {
         return !sprite.isAlive();
     }), mangrovetrees.end());
+     Icespikes.erase(std::remove_if(Icespikes.begin(), Icespikes.end(), [](const Object& sprite) {
+        return !sprite.isAlive();
+    }), Icespikes.end());
     for (auto& sprite : oaktrees)
     {
         sprite.draw(window);
@@ -510,6 +557,10 @@ int main(){
         sprites.draw(window);
     }
     for (auto& sprites : mangrovetrees)
+    {
+        sprites.draw(window);
+    }
+    for (auto& sprites : Icespikes)
     {
         sprites.draw(window);
     }
