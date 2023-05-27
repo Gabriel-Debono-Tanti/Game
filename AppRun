@@ -3,5 +3,5 @@
 HERE="$(dirname  "$(readlink -f "${0}")")"
 
 EXEC="${HERE}/usr/bin/Game"
-
+export LD_LIBRARY_PATH=${APPDIR}/usr/lib:${LD_LIBRARY_PATH}
 exec "${EXEC}"
