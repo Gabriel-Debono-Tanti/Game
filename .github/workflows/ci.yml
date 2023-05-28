@@ -62,6 +62,8 @@ jobs:
             cp ./game.desktop game/
             cp ./AppRun game/
             cp ./icon.png game/
+            cp ./Art  game/usr/bin/
+            cp ./Music  game/usr/bin/
             chmod a+x game/AppRun
             chmod a+x game/usr/bin/Game
             mv game game.AppDir
