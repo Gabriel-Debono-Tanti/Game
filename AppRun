@@ -1,7 +1,9 @@
 #!/bin/sh
 
 HERE="$(dirname  "$(readlink -f "${0}")")"
+export LD_LIBRARY_PATH=${HERE}/usr/lib:${LD_LIBRARY_PATH}\n${HERE}/usr/bin/Game
 
-EXEC="${HERE}/usr/bin/Game"
-export LD_LIBRARY_PATH=${APPDIR}/usr/lib:${LD_LIBRARY_PATH}
-exec "${EXEC}"
+
+DEST="${HERE}/usr/bin/"
+cd "${DEST}"
+exec ./Game

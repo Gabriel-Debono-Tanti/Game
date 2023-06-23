@@ -1,0 +1,14 @@
+Linux=Game.AppDir/Game.AppDir
+bin=$Linux/usr/bin
+
+mkdir -p $Linux
+mkdir -p $bin
+
+cp -r ./Game $bin/
+cp -r ./src/LibLinux $bin/
+cp -r  ./AppRun $Linux/
+cp -r  ./game.desktop $Linux/
+chmod a+x $Linux/AppRun
+chmod a+x $bin/csprite
+mv csp $Linux
+ARCH=x86_64 appimagetool Game.AppDir

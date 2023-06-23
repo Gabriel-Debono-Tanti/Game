@@ -3,10 +3,12 @@
 package=Game.app/Game.app
 libs=$package/Contents/libs/
 MacOS=$package/Contents/MacOS
+Resources=$package/Contents/Resources
 mkdir -p $MacOS
 mkdir -p $libs
+mkdir -p $Resources
 cp ./Game $MacOS
-cp -r ./Art $MacOS/Art
-cp -r ./Music $MacOS/Music
+cp -r ./Art $Resources/Art
+cp -r ./Music $Resources/Music
 mkdir -p $package/Contents/libs/
 dylibbundler -od -b -ns -x $MacOS/Game -d $libs/
