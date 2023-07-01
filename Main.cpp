@@ -15,36 +15,69 @@ using namespace std;
 using namespace sf;
 
 
-Color dd(111, 111, 111);
-Color cw(89, 176, 13);
-Color c(0,202,27);
-Color c2(67,202,0);
-Color magic(58, 228, 205);
-Color maple(103, 137, 24);
-Color cdb(33, 78, 211);
-Color a(132, 8, 16);
-Color co(8, 146, 208);
-Color swa(35, 40, 0);
-Color ta(0, 66, 37);
-Biome grassland(Vector2f(700, 700), Color::Green);
-Biome desert(Vector2f(600, 600), Color::Yellow);
-Biome birchforest(Vector2f(950, 950),c2);
-Biome countryland(Vector2f(900, 900), c); 
-Biome magicalforest(Vector2f(900, 900), magic);
-Biome mapleforest(Vector2f(900, 950), maple);
-Biome CherryWoods(Vector2f(800, 1350), cw);
-Biome Moun(Vector2f(1600, 650), Color::Black);
-Biome cold(Vector2f(700, 1000), Color::White);
-Biome flower(Vector2f(500, 700), Color::Green);
-Biome DeathD(Vector2f(900, 900), dd);
-Biome CB(Vector2f(400, 400), cdb);
+//Color dd(111, 111, 111);
+//Color cw(89, 176, 13);
+//Color c(0,202,27);
+//Color c2(67,202,0);
+//Color magic(58, 228, 205);
+//Color maple(103, 137, 24);
+//Color cdb(33, 78, 211);
+//Color a(132, 8, 16);
+//Color co(8, 146, 208);
+//Color swa(35, 40, 0);
+//Color ta(0, 66, 37);
 
-Biome Taiga(Vector2f(1000, 800), ta);
-Biome Swamp(Vector2f(500, 500), swa);
-Biome Al(Vector2f(650, 650), a);
-Biome Com(Vector2f(600, 600), co);
 int main(){
-    
+
+    Texture gl;
+    gl.loadFromFile("Art/Others/Biomes/gl.png");
+    Texture ds;
+    ds.loadFromFile("Art/Others/Biomes/desertbiome.png");
+    Texture bf;
+    bf.loadFromFile("Art/Others/Biomes/birchforest.png");
+    Texture col;
+    col.loadFromFile("Art/Others/Biomes/countryland.png");
+    Texture magic;
+    magic.loadFromFile("Art/Others/Biomes/magicalforest.png");
+    Texture dd;
+    dd.loadFromFile("Art/Others/Biomes/deathdesertbiome.png");
+    Texture maple;
+    maple.loadFromFile("Art/Others/Biomes/mapleforest.png");
+    Texture cdb;
+    cdb.loadFromFile("Art/Others/Biomes/ci.png");
+    Texture cw;
+    cw.loadFromFile("Art/Others/Biomes/cherrywoods.png");
+    Texture ta;
+    ta.loadFromFile("Art/Others/Biomes/taigabiome.png");
+    Texture swa;
+    swa.loadFromFile("Art/Others/Biomes/swampbiome.png");
+    Texture a;
+    a.loadFromFile("Art/Others/Biomes/alaphanty.png");
+    Texture co;
+    co.loadFromFile("Art/Others/Biomes/comory.png");
+    Texture moun;
+    moun.loadFromFile("Art/Others/Biomes/mountains.png");
+    Texture cl;
+    cl.loadFromFile("Art/Others/Biomes/coldbiome.png");
+    Texture fl;
+    fl.loadFromFile("Art/Others/Biomes/flower.png");
+    Biome grassland(Vector2f(700, 700), &gl);
+Biome desert(Vector2f(600, 600), &ds);
+Biome birchforest(Vector2f(950, 950),&bf);
+Biome countryland(Vector2f(900, 900), &col); 
+Biome magicalforest(Vector2f(900, 900), &magic);
+Biome mapleforest(Vector2f(900, 950), &maple);
+Biome CherryWoods(Vector2f(800, 1350), &cw);
+Biome Moun(Vector2f(1600, 650), &moun);
+Biome cold(Vector2f(700, 1000), &cl);
+Biome flower(Vector2f(500, 700), &fl);
+Biome DeathD(Vector2f(900, 900), &dd);
+Biome CB(Vector2f(400, 400), &cdb);
+
+Biome Taiga(Vector2f(1000, 800), &ta);
+Biome Swamp(Vector2f(500, 500), &swa);
+Biome Al(Vector2f(650, 650), &a);
+Biome Com(Vector2f(600, 600), &co);
     
     
 
@@ -93,6 +126,8 @@ int main(){
     mangrovet.loadFromFile("Art/Trees/tree7.png");
     Texture Icespiket;
     Icespiket.loadFromFile("Art/Trees/ICESPIKE.png");
+    Texture burntt;
+    burntt.loadFromFile("Art/Trees/burnttree.png");
     //Sprite oaktree[100];
    // for(int i = 0; i < 100; i++){
     //    int x = rand()%(480+400 + 1) - 400;
@@ -112,6 +147,7 @@ int main(){
     std::vector<Object> magicaltrees;
     std::vector<Object> mangrovetrees;
     std::vector<Object> Icespikes;
+    std::vector<Object> burnttrees;
         for (int i = 0; i < 200; ++i)
          {
             int x = rand()% ((int)(countryland.biome.getSize().x +countryland.biome.getPosition().x)-50-(int)(countryland.biome.getPosition().x) - 1) + countryland.biome.getPosition().x;
@@ -179,11 +215,19 @@ int main(){
         }
         for (int i = 0; i < 200; ++i)
         {
-            int x = rand()% ((int)(cold.biome.getSize().x+cold.biome.getPosition().x)-50-(int)(cold.biome.getPosition().x) - 1) + cold.biome.getPosition().x;
+            int x = rand()% ((int)(cold.biome.getSize().x+cold.biome.getPosition().x)-150-(int)(cold.biome.getPosition().x) - 1) + cold.biome.getPosition().x;
             int y = rand()% ((int)(cold.biome.getSize().y+cold.biome.getPosition().y)-200-(int)(cold.biome.getPosition().y) - 1) + cold.biome.getPosition().y;
             Object tree(Icespiket, Vector2f((x), (y)), 1000);
         // Push the sprite into the vector
             Icespikes.push_back(tree);
+        }
+         for (int i = 0; i < 200; ++i)
+        {
+            int x = rand()% ((int)(Al.biome.getSize().x+Al.biome.getPosition().x)-50-(int)(Al.biome.getPosition().x) - 1) + Al.biome.getPosition().x;
+            int y = rand()% ((int)(Al.biome.getSize().y+Al.biome.getPosition().y)-50-(int)(Al.biome.getPosition().y) - 1) + Al.biome.getPosition().y;
+            Object tree(burntt, Vector2f((x), (y)), 500);
+        // Push the sprite into the vector
+            burnttrees.push_back(tree);
         }
     
     while (window.isOpen())
@@ -288,6 +332,16 @@ int main(){
                     // destroy sprite
                             auto it = std::find_if(Icespikes.begin(), Icespikes.end(), [&sprite](const Object& s) { return &s == &sprite; });
                             Icespikes.erase(it);
+                        }
+                    }   
+                }
+                for (auto& sprite : burnttrees) {
+                    if (sprite.contains(Vector2f(mousePosF))) {
+                        sprite.takeDamage(10);
+                        if (sprite.m_health <= 0) {
+                    // destroy sprite
+                            auto it = std::find_if(burnttrees.begin(), burnttrees.end(), [&sprite](const Object& s) { return &s == &sprite; });
+                            burnttrees.erase(it);
                         }
                     }   
                 }
@@ -500,6 +554,27 @@ int main(){
             }
         }
     }
+
+    for (auto& sprite : burnttrees)
+    {
+        for (auto& otherSprite : burnttrees)
+        {
+            if (&sprite == &otherSprite)
+            {
+                continue;
+            }
+
+            // Calculate the distance between the sprites
+            sf::Vector2f displacement = sprite.getPosition() - otherSprite.getPosition();
+            float distance = sqrt(displacement.x * displacement.x + displacement.y * displacement.y);
+
+            // If the sprites are colliding, subtract damage from the sprite's health
+            if (distance < sprite.getRadius() + otherSprite.getRadius())
+            {
+                sprite.takeDamage(std::rand() % 10 + 1);
+            }
+        }
+    }
     // Remove any sprites whose health has reached 0 or less
     oaktrees.erase(std::remove_if(oaktrees.begin(), oaktrees.end(), [](const Object& sprite) {
         return !sprite.isAlive();
@@ -528,6 +603,9 @@ int main(){
      Icespikes.erase(std::remove_if(Icespikes.begin(), Icespikes.end(), [](const Object& sprite) {
         return !sprite.isAlive();
     }), Icespikes.end());
+     burnttrees.erase(std::remove_if(burnttrees.begin(), burnttrees.end(), [](const Object& sprite) {
+        return !sprite.isAlive();
+    }), burnttrees.end());
     for (auto& sprite : oaktrees)
     {
         sprite.draw(window);
@@ -561,6 +639,10 @@ int main(){
         sprites.draw(window);
     }
     for (auto& sprites : Icespikes)
+    {
+        sprites.draw(window);
+    }
+    for (auto& sprites : burnttrees)
     {
         sprites.draw(window);
     }

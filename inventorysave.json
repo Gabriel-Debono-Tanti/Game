@@ -1,0 +1,19 @@
+{
+    "Ite": [
+      {
+        "type": "forest",
+        "value1": 10,
+        "value2": 0.5
+      },
+      {
+        "type": "desert",
+        "value1": 5,
+        "value2": 0.2
+      },
+      {
+        "type": "mountain",
+        "value1": 8,
+        "value2": 0.8
+      }
+    ]
+  }

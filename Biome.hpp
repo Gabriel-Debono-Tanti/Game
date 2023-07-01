@@ -10,9 +10,10 @@ private:
     
 public:
     sf::RectangleShape biome;
-    Biome(sf::Vector2f size, sf::Color colour){
+    Biome(sf::Vector2f size, sf::Texture* colour){
         biome.setSize(size);
-        biome.setFillColor(colour);
+        biome.setTexture(colour, false);
+        
     }
     void drawTo(sf::RenderWindow &window){
         window.draw(biome);
