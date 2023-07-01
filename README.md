@@ -26,7 +26,7 @@ A Small game made in SFML with the help of a few small tools that I made
 |  0.0.7  | :heavy_check_mark:  |  May 13th 2023  |
 |  0.0.8  | :heavy_check_mark:  |  May 20th 2023  |
 |  0.0.9  | :heavy_check_mark:  |  May 27th 2023  |
-|  0.1.0  |    -                |        -        |
+|  0.1.0  | :heavy_check_mark:  |  July 1st 2023  |
 
 :heavy_check_mark: = Released
 :large_blue_circle: = Near Completion
