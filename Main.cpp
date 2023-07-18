@@ -41,7 +41,7 @@ void damageClickedSprites(std::vector<Object>& trees, Vector2f clickPosF) {
     }
 }
 
-void updateTrees(std::vector<Object> trees, RenderWindow& window) {
+void updateTrees(std::vector<Object>& trees, RenderWindow& window) {
     for (auto& sprite : trees)
     {
         for (auto& otherSprite : trees)
@@ -322,6 +322,7 @@ int main() {
             }
         }
 
+
         window.clear(sf::Color::Blue);
 
         mapleforest.drawTo(window);
@@ -351,7 +352,7 @@ int main() {
         for (auto &treeType: treeTypes) {
             updateTrees(treeType, window);
         }
-
-        return 0;
     }
+
+    return 0;
 }
